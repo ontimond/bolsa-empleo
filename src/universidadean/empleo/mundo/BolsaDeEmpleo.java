@@ -162,6 +162,12 @@ public class BolsaDeEmpleo {
         int posicion = -1;
 
         // TODO: Realizar el ejercicio correspondiente
+            for (Aspirante item: darAspirantes()){
+        if(item.darNombre().equalsIgnoreCase(nombre)){
+            posicion = darAspirantes().indexOf(item);
+            System.out.println(posicion+" "+item.darNombre());
+            }
+        }
 
         return posicion;
     }
@@ -179,7 +185,26 @@ public class BolsaDeEmpleo {
         int fin = aspirantes.size() - 1;
 
         // TODO: Realizar el ejercicio correspondiente
+        while (ini <= fin) {
 
+            int centro = (fin + ini) / 2;
+
+            int comparar = nombre.compareTo(aspirantes.get(centro).darNombre());
+
+            if (aspirantes.get(centro).darNombre().equalsIgnoreCase(nombre)) {
+                posicion = centro;
+                break;
+
+            } else if (comparar < 0) {
+
+                ini = centro + 1;
+
+            } else {
+                fin = centro - 1;
+
+            }
+
+        }
         return posicion;
     }
 
@@ -193,7 +218,15 @@ public class BolsaDeEmpleo {
         int posicion = -1;
 
         // TODO: Realizar el ejercicio correspondiente
+        int edad = aspirantes.get(0).darEdad();
 
+        for (Aspirante item: darAspirantes()){
+
+            if (item.darEdad() <= edad){
+                edad = item.darEdad();
+                posicion = darAspirantes().indexOf(item);
+            }
+        }
         return posicion;
     }
 
@@ -206,7 +239,15 @@ public class BolsaDeEmpleo {
         int posicion = -1;
 
         // TODO: Realizar el ejercicio correspondiente
+        int edad = aspirantes.get(0).darEdad();
 
+        for (Aspirante item: darAspirantes()){
+
+            if (item.darEdad() >= edad){
+                edad = item.darEdad();
+                posicion = darAspirantes().indexOf(item);
+            }
+        }
         return posicion;
     }
 
@@ -219,7 +260,15 @@ public class BolsaDeEmpleo {
         int posicion = -1;
 
         // TODO: Realizar el ejercicio correspondiente
+        int experiencia = aspirantes.get(0).darAniosExperiencia();
 
+        for (Aspirante item: darAspirantes()){
+
+            if (item.darAniosExperiencia() >= experiencia){
+                experiencia = item.darAniosExperiencia();
+                posicion = darAspirantes().indexOf(item);
+            }
+        }
         return posicion;
     }
 
@@ -234,7 +283,13 @@ public class BolsaDeEmpleo {
         boolean contratado = false;
 
         // TODO: Realizar el ejercicio correspondiente
-
+        int posicion = -1;
+        for (Aspirante item: darAspirantes()){
+            if(item.darNombre().equals(nombre)){
+                posicion = darAspirantes().indexOf(item);
+                aspirantes.remove(posicion);
+            }
+        }
         return contratado;
     }
 
@@ -251,7 +306,17 @@ public class BolsaDeEmpleo {
         int cont = 0;
 
         // TODO: Realizar el ejercicio correspondiente
+        int experiencia = aspirantes.get(0).darAniosExperiencia();
 
+        for (Aspirante item: darAspirantes()){
+
+            if (item.darAniosExperiencia() == aniosExperiencia){
+                experiencia = item.darAniosExperiencia();
+                cont = darAspirantes().indexOf(item);
+                eliminados ++;
+                aspirantes.remove(cont);
+            }
+        }
         return eliminados;
     }
 
